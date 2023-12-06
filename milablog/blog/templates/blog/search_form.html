@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Busqueda - {{ block.super }}{% endblock %}
+
+{% block header %}Busqueda{% endblock %}
+
+{% block content %}
+    <form method="get" action="{% url 'search_posts' %}">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+{% endblock %}

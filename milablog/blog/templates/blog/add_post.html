@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Agregar publicaciones - {{ block.super }}{% endblock %}
+
+{% block header %}Agregar una nueva publicacion {% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'add_post' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar publicacion</button>
+    </form>
+{% endblock %}

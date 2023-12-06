@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Resultados de la busqueda - {{ block.super }}{% endblock %}
+
+{% block header %}Resultado de la busqueda{% endblock %}
+
+{% block content %}
+    <h2>Resultados para '{{ query }}'</h2>
+    {% if results %}
+        <ul>
+            {% for post in results %}
+                <li>{{ post.title }} - {{ post.author.name }} - {{ post.category.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+{% endblock %}
