@@ -3,6 +3,7 @@ from .models import Post, CreatorInfo, Blog
 from .forms import AuthorForm, CategoryForm, PostForm, SearchForm, BlogForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required, user_passes_test
+from datetime import datetime
 
 def post_list(request):
     posts = Post.objects.all()
@@ -50,10 +51,15 @@ def blog_detail(request, blog_id):
 @user_passes_test(lambda u: u.is_superuser)
 def add_blog(request):
     if request.method == 'POST':
-        form = BlogForm(request.POST, request.FILES)
+        form = BlogForm(request.POST)
         if form.is_valid():
-            form.save()
+            blog = form.save(commit=False)
+            blog.date = datetime.now().date()
+            blog.time = datetime.now().time()
+            blog.save()
             return redirect('blog_list')
+        else:
+            print(form.errors)  # Imprime los errores de validación en la consola
     else:
         form = BlogForm()
     return render(request, 'blog/add_blog.html', {'form': form})

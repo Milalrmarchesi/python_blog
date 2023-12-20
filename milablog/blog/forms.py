@@ -22,5 +22,8 @@ class SearchForm(forms.Form):
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ['title', 'subtitle', 'body', 'author', 'date', 'image']
-
+        fields = ['title', 'subtitle', 'body', 'author', 'date', 'time', 'image']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+            'time': forms.TimeInput(attrs={'type': 'time'}),
+        }

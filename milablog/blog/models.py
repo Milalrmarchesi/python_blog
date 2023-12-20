@@ -30,4 +30,5 @@ class Blog(models.Model):
     body = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     date = models.DateField()
-    image = models.ImageField(upload_to='blog_images/')
+    time = models.TimeField() 
+    image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
