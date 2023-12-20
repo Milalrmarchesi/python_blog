@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Eliminar Blog - {{ block.super }}{% endblock %}
+
+{% block header %}Eliminar Blog: {{ blog.title }}{% endblock %}
+
+{% block content %}
+    <p>¿Estás seguro de que deseas eliminar el blog "{{ blog.title }}"?</p>
+    <form method="post" action="{% url 'delete_blog' blog.id %}">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+        <a href="{% url 'blog_list' %}">Cancelar</a>
+    </form>
+{% endblock %}

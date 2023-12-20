@@ -15,3 +15,19 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+class CreatorInfo(models.Model):
+    name = models.CharField(max_length=255)
+    bio = models.TextField()
+    project_description = models.TextField()
+
+    def __str__(self):
+        return self.name
+    
+class Blog(models.Model):
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200)
+    body = models.TextField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    date = models.DateField()
+    image = models.ImageField(upload_to='blog_images/')

@@ -95,3 +95,25 @@ Este es un blog simple creado con Django que incluye tres modelos: Author, Categ
    - Las búsquedas se realizan por titulares.
 
 
+## Agregados para el proyecto final
+
+Ahora utilizo blog en vez de post ya que aumentaron los requisitos y necesito modificar el esquema de la db. 
+1. **Agrego un nuevo model:**
+   - En el archivo models.py, agrega un modelo llamado CreatorInfo:
+     ```python
+      class CreatorInfo(models.Model):
+         name = models.CharField(max_length=255)
+         bio = models.TextField()
+         project_description = models.TextField()
+
+         def __str__(self):
+            return self.name
+     ```
+
+     Ejecuto las migraciones correspondientes: 
+      ```bash
+      python3 manage.py makemigrations
+      python3 manage.py migrate
+      ```
+
+      Superusuario (admin): mila/mila2023

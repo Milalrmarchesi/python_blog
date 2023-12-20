@@ -1,5 +1,5 @@
 from django import forms
-from .models import Author, Category, Post
+from .models import Author, Category, Post, Blog
 
 class AuthorForm(forms.ModelForm):
     class Meta:
@@ -18,3 +18,9 @@ class PostForm(forms.ModelForm):
         
 class SearchForm(forms.Form):
     search_query = forms.CharField(max_length=100, label='Search')
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['title', 'subtitle', 'body', 'author', 'date', 'image']
+

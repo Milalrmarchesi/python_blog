@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Agregar Blog - {{ block.super }}{% endblock %}
+
+{% block header %}Agregar un Nuevo Blog{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" action="{% url 'add_blog' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar Blog</button>
+    </form>
+{% endblock %}

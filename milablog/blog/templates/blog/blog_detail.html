@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Detalle del Blog - {{ block.super }}{% endblock %}
+
+{% block header %}Detalle del Blog{% endblock %}
+
+{% block content %}
+    <h2>{{ blog.title }}</h2>
+    <h3>{{ blog.subtitle }}</h3>
+    <p>Autor: {{ blog.author }}</p>
+    <p>Fecha: {{ blog.date }}</p>
+    <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+    <p>{{ blog.body }}</p>
+{% endblock %}
